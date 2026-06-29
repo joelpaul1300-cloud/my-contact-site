@@ -7,7 +7,6 @@ import { Resend } from 'resend'
    Set RESEND_API_KEY in .env
    Set CONTACT_EMAIL_RECIPIENT to change where emails are sent
    ────────────────────────────────────────────────────────────── */
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 /* ── HTML email template (tabular format) ────────────────────── */
 function buildEmailHTML(data: {
@@ -189,6 +188,7 @@ export async function POST(req: NextRequest) {
     })
 
     // ── Send email via Resend ──
+    const resend = new Resend(process.env.RESEND_API_KEY)
     const recipient = process.env.CONTACT_EMAIL_RECIPIENT || 'joelpaul0413@gmail.com'
     const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
 
