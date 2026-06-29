@@ -92,9 +92,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+	console.log('SUBMIT CLICKED', formData)
     const allTouched = Object.fromEntries(Object.keys(formData).map((k) => [k, true]))
     setTouched(allTouched)
     const validationErrors = validate(formData)
+	console.log('VALIDATION ERRORS:', validationErrors)
     setErrors(validationErrors)
     if (Object.keys(validationErrors).length > 0) return
 
